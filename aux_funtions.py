@@ -19,7 +19,7 @@ def string_loder(Tablero_size):
         return "err","err","err", ["Archivo de preguntas no se encuentra."]
 
     with open(PATH, newline='') as csvfile:
-        has_header = csv.Sniffer().has_header(csvfile.read(1024))
+        has_header = csv.Sniffer().has_header(csvfile.readline())
         csvfile.seek(0)  
         reader = csv.reader(csvfile)
 
@@ -347,7 +347,6 @@ def load_constants():
     for element in text:
         element = element.split(":")
         element = element.pop()
-        element = element[0]
         
         if element.isnumeric():
             element = int(element)

@@ -1,6 +1,13 @@
+import sys
+import os
+PATH = os.path.dirname(__file__)
+sys.path.append(PATH)
+
+
+
 import math as mth
-import pygame as pg
 import aux_funtions as af
+import pygame as pg
 
 
 

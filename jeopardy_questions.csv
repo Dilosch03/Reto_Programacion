@@ -20,7 +20,7 @@ ciencia,Que mide un barometro ,presion del aire,temperatura,velocidad,peso,VERDA
 ciencia,Cual es el animal terrestre mas grande ,Jaguar,Hipopotamo,Leon,Elefante,FALSE,FALSE,FALSO,VERDADERO,400
 ciencia,Cuantos brazos tiene la estrella de mar comun ,4,5,6,7,FALSE,VERDADERO,FALSO,FALSE,500
 geografia,Cuantos oceanos hay en la tierra,4,5,6,7,FALSO,VERDADERO,FALSO,FALSO,100
-geografia,Cual es el rio mas grande del mundo ,,Rio Mississippi,Amazonas,RioNilo,FALSO,FALSO,FALSO,VERDADERO,200
+geografia,Cual es el rio mas grande del mundo ,Rio Tigris,Rio Mississippi,Amazonas,RioNilo,FALSO,FALSO,FALSO,VERDADERO,200
 geografia,Que pais tiene mas habitantes ,China,India,Rusia,EUA,VERDADERO,FALSO,FALSO,FALSO,300
 geografia,Cuantos estados tiene EUA,40,45,50,55,FALSO,FALSO,VERDADERO,FALSO,400
 geografia,Que rio pasa por paris ,Rio Sena,Rio Tamesis ,Rio Rin,Rio Tajo,VERDADERO,FALSO,FALSO,FALSO,500
