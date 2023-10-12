@@ -1,27 +1,26 @@
 Tema,Pregunta,Respuestas,,,,Cual es correcta,,,,puntos
-animales,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,100
-animales,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,200
-cosas,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,200
-animales,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,300
-planetas,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,200
-planetas,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,300
-cosas,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,300
-animales,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,400
-colores,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,200
-animales,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,500
-colores,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,300
-colores,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,400
-planetas,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,400
-planetas,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,100
-planetas,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,500
-colores,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,500
-cosas,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,100
-cosas,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,400
-colores,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,100
-lugares,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,500
-lugares,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,400
-lugares,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,300
-cosas,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,500
-lugares,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,200
-lugares,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,100
-lugares,cuanto tiempo vive un perro,16,15,18,24,FALSE,FALSE,TRUE,FALSE,100
+historia,En que año acabo la segunda guerra mundial ,1943,1944,1945,1946,FALSE,FALSE,TRUE,FALSE,100
+historia,Cuando se creo la constitucion mexicana ,1916,1917,1918,1919,FALSE,VERDADERO,FALSO,FALSE,200
+historia,En que año se aprobo la actual constitucion española,1975,1976,1977,1978,FALSE,FALSE,FALSO,VERDADERO,300
+historia,En que año viajo al espacio el primer ser humano,1959,1960,1961,1962,FALSE,FALSE,VERDADERO,FALSE,400
+historia,Cuando fue la caida de Tenochtitlan,1521,1522,1523,1524,VERDADERO,FALSE,FALSO,FALSE,500
+peliculas,Cuántas veces Arnold Schwarzenegger ha interpretado al Terminator,3,4,5,6,FALSE,FALSE,FALSO,VERDADERO,100
+peliculas,En que pelicula de Star Wars La princesa Leia usa la fuerza ,Episodio III,Episodio IV,Episodio V,Episodio VI,FALSE,FALSO,FALSO,VERDADERO,200
+peliculas,Cuando fueron los primeros oscares,1928,1929,1930,1931,FALSE,VERDADERO,FALSO,FALSE,300
+peliculas,Cuantas peliculas hay en la saga Saw,7,8,9,10,FALSE,FALSE,VERDADERO,FALSE,400
+peliculas,A que año viajan en Regreso al Futuro II,2015,2016,2017,2018,VERDADERO,FALSE,FALSO,FALSE,500
+deportes,Cuantos minutos dura un partido de futbol,85,90,100,120,FALSE,VERDADERO,FALSO,FALSE,100
+deportes,Cuantos minutos dura un partido de handball,50,55,60,65,FALSE,FALSE,VERDADERO,FALSE,200
+deportes,Cual es la ultima cinta que puedes conseguir en las diferentes artes marciales ,Negra,Cafe,Gris,Verde,VERDADERO,FALSE,FALSO,FALSE,300
+deportes,Cuantos minutos dura un partido de rugby,65,70,75,80,FALSE,FALSE,FALSO,VERDADERO,400
+deportes,Cuantos anillos de la NBA tiene Shaquille O'Neil,2,3,4,5,FALSE,FALSE,VERDADERO,FALSE,500
+ciencia,A que temperatura esta el punto de ebullicion del agua ,90° C,95° C,100° C,110° C,FALSE,FALSE,VERDADERO,FALSE,100
+ciencia,Que animal pertenece a la familia de los felinos,Perro,Gato,Pajaro,Serpiente,FALSE,VERDADERO,FALSO,FALSE,200
+ciencia,Que mide un barometro ,presion del aire,temperatura,velocidad,peso,VERDADERO,FALSE,FALSO,FALSE,300
+ciencia,Cual es el animal terrestre mas grande ,Jaguar,Hipopotamo,Leon,Elefante,FALSE,FALSE,FALSO,VERDADERO,400
+ciencia,Cuantos brazos tiene la estrella de mar comun ,4,5,6,7,FALSE,VERDADERO,FALSO,FALSE,500
+geografia,Cuantos oceanos hay en la tierra,4,5,6,7,FALSO,VERDADERO,FALSO,FALSO,100
+geografia,Cual es el rio mas grande del mundo ,,Rio Mississippi,Amazonas,RioNilo,FALSO,FALSO,FALSO,VERDADERO,200
+geografia,Que pais tiene mas habitantes ,China,India,Rusia,EUA,VERDADERO,FALSO,FALSO,FALSO,300
+geografia,Cuantos estados tiene EUA,40,45,50,55,FALSO,FALSO,VERDADERO,FALSO,400
+geografia,Que rio pasa por paris ,Rio Sena,Rio Tamesis ,Rio Rin,Rio Tajo,VERDADERO,FALSO,FALSO,FALSO,500
