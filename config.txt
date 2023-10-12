@@ -1,0 +1,4 @@
+altura de la ventana:720
+largo de la ventana:1080
+numero de equipos base:2
+FPS:60

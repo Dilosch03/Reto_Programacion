@@ -26,10 +26,11 @@ def string_loder(Tablero_size):
         if has_header:
             next(reader)  
         
-        num = 0
+        num = [0,0]
         flag = True
 
         for row in reader:
+            index_error = 0
             flag = False
             if len(row)==0:
                 continue
@@ -43,14 +44,22 @@ def string_loder(Tablero_size):
                 index = int(len(headers)-1.)
             
             err = False
-            
+            #heder[0],question[1],answer[2:5],truh table[6:9],points[10]
             for element in row:
                 if (element==""):
-                    
                     err = True
+                    break
+            
+            for element in row[6:10]:
+                    if not(element.lower() in ['false','true','verdadero','falso']):
+                        err = True
+                        index_error = 1
+                        break
+
+
             
             if err:
-                num+=1
+                num[index_error]+=1
                 continue
 
 
@@ -59,8 +68,11 @@ def string_loder(Tablero_size):
         if flag:
             errores.append("Archivo no contiene preguntas.")
 
-        if(num>0):
-            errores.append(str(num)+" preguntas no tienen todas las areas con datos.")
+        if(num[0]>0):
+            errores.append(str(num[0])+" preguntas no tienen todas las areas con datos.")
+        
+        if(num[1]>0):
+            errores.append(str(num[1])+" preguntas no tienen correcto el formato de la tabla de verdad.")
 
     not_valid = []
     counter = [0,0,0,0]
@@ -100,7 +112,7 @@ def string_loder(Tablero_size):
 
         questionare_matrix[i] = _temp
 
-    caracteristica = [" el tamaño adecuado."," un numero en el area de puntos."," un valor dentro de rango para los puntos."," temas no tienen pregntas para todas las categorias de puntos."]
+    caracteristica = [" el tamaño adecuado."," un numero en el area de puntos."," un valor dentro de rango para los puntos."," temas no tienen preguntas para todas las categorias de puntos."]
     for l,i in enumerate(counter):
         if i>0:
             text = " preguntas no tienen" + caracteristica[l]
@@ -111,7 +123,7 @@ def string_loder(Tablero_size):
 
     not_valid.reverse()
     if len(not_valid)>0:
-        errores.append(str(len(not_valid))+" temas no cumplen con el numero minimo de preguntas.")
+        errores.append(str(len(not_valid))+" temas no cumplen con el numero minimo de preguntas aceptadas.")
 
     for i in not_valid:
         del questionare_matrix[i]
@@ -217,7 +229,7 @@ def answer_detect(mouse,truth_list,answes,size,WINDOW,font,window_size):
         color = RED
 
         if hover:
-            if (_bool.lower() == "true"):
+            if (_bool.lower() in ["true","verdadero"]):
                 color = GREEN
                 result = True
 
@@ -254,6 +266,105 @@ def popup(warning,type):
         return True 
     return False
 
+
+def score_sort(arr):
+    teams =[]
+    for i in range(len(arr)):
+        teams.append(i)
+        arr[i] = arr[i]//100
+
+
+    _min = min(arr)
+    _max = max(arr)
+
+    temp_arr = [0]*(_max-_min+1)
+    temp_arr_2 = [0]*(_max-_min+1)
+
+    for j,i in enumerate(arr):
+        temp_arr[i-_min] += 1
+        if not(temp_arr_2[i-_min] == 0):
+            if hasattr(temp_arr_2[i-_min],"__len__"):
+                temp_arr_2[i-_min].append(teams[j])
+            else:
+                temp_arr_2[i-_min] = [temp_arr_2[i-_min],teams[j]]
+        else:
+            temp_arr_2[i-_min] = teams[j]
+
+        
+    arr = []
+    teams = []
+
+    for i,j in enumerate(temp_arr):
+        for l in range(j):
+            arr.append(_min+i)
+        if not(j==0):
+            if hasattr(temp_arr_2[i],"__len__"):
+                temp_arr_2[i].reverse()
+                for element in temp_arr_2[i]:
+                    teams.append(element)
+            else:
+                teams.append(temp_arr_2[i])
+
+    for i,element in enumerate(arr):
+        arr[i] = element*100
+    
+    arr.reverse()
+    teams.reverse()
+
+    return arr,teams
+
+def restauracion(path,exist):
+    text = "altura de la ventana:720\nlargo de la ventana:1080\nnumero de equipos base:2\nFPS:60"
+    if not exist:
+        open(path,"x")
+    
+    File = open(path,"w")
+    File.write(text)
+    File.close()
+    
+
+def load_constants():
+    constants = []
+    FILE = "config.txt"
+    MAIN_PATH = os.path.dirname(__file__)
+    PATH = os.path.join(MAIN_PATH,FILE)
+
+    if not(os.path.isfile(PATH)):
+        popup(["Archivo config no se encuentra.","Restaurando archivo config"],"Warning")
+        restauracion(PATH,False)
+        return "err","err","err","err"
+
+    File = open(PATH,"r")
+    text = File.read().split("\n")
+    File.close()
+
+    if len(text) < 4:
+        popup(["No se encontraron todas las constantes en el archivo config.","Restaurando archivo config"],"Warning")
+        restauracion(PATH,True)
+        return "err","err","err","err"
+
+    err = 0
+    for element in text:
+        element = element.split(":")
+        element = element.pop()
+        element = element[0]
+        
+        if element.isnumeric():
+            element = int(element)
+            constants.append(element)
+
+        else:
+            err += 1
+        
+    if err>0:
+        popup([str(err)+" constantes no tienen valor numerico.","Restaurando archivo config"],"Warning")
+        restauracion(PATH,True)
+        return "err","err","err","err"
+    
+    return constants[0],constants[1],constants[2],constants[3],
+    
+
+
 BLUE = (40,40,240)
 
 WHITE = (250,250,250)
@@ -269,3 +380,4 @@ PURPLE = (125,0,125)
 AQUA = (0,150,135)
 BROWN = (110, 35, 25)
 LIGHTBLUE = (55, 210, 250)
+
