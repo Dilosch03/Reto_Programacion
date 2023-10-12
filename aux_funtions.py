@@ -18,7 +18,7 @@ def string_loder(Tablero_size):
     if not(os.path.isfile(PATH)):
         return "err","err","err", ["Archivo de preguntas no se encuentra."]
 
-    with open(PATH, newline='') as csvfile:
+    with open(PATH, newline='',encoding="utf-8") as csvfile:
         has_header = csv.Sniffer().has_header(csvfile.readline())
         csvfile.seek(0)  
         reader = csv.reader(csvfile)
