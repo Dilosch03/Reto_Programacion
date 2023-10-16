@@ -16,7 +16,7 @@ ALTURA,LARGO,NUM_DEFAULT,FPS = af.load_constants()
 if ALTURA == "err":
     ALTURA,LARGO,NUM_DEFAULT,FPS = af.load_constants()
 
-BOXZONESIZE = [LARGO-int(LARGO*0.05)*2, ALTURA-int(ALTURA*0.05)*2]
+BOXZONESIZE = [LARGO-int(LARGO*0.05)*2, ALTURA-int(ALTURA*0.04)*2]
 
 
 
@@ -54,7 +54,7 @@ def main(num_jugadores):
 
     for num_heder,heder in enumerate(headers):
         _x = int(LARGO * 0.05) + (int(BOXSIZE[0] * 0.1) + BOXSIZE[0]) * (num_heder - TAMAÑO_TABLERO[0] * mth.floor(num_heder / TAMAÑO_TABLERO[0]))
-        _y = int(ALTURA * 0.03)
+        _y = int(ALTURA * 0.02)
 
         position_matrix.append([_x,_y,af.GREEN])
 
@@ -66,7 +66,7 @@ def main(num_jugadores):
 
     for num_box in range(TAMAÑO_TABLERO[0] * TAMAÑO_TABLERO[1]):
         _x = int(LARGO * 0.05) + (int(BOXSIZE[0] * 0.1) + BOXSIZE[0]) * (num_box - TAMAÑO_TABLERO[0] * mth.floor(num_box / TAMAÑO_TABLERO[0]))
-        _y = int(ALTURA * 0.18) + (int(BOXSIZE[1] * 0.1) + BOXSIZE[1]) * mth.floor(num_box / TAMAÑO_TABLERO[0])
+        _y = int(ALTURA * 0.17) + (int(BOXSIZE[1] * 0.1) + BOXSIZE[1]) * mth.floor(num_box / TAMAÑO_TABLERO[0])
 
         position_matrix.append([_x,_y,af.RED])
 
@@ -78,12 +78,14 @@ def main(num_jugadores):
         pg.display.flip()
 
 
-    pg.display.update()
+    
 
     escena = 0
     current_team = 0
     turn = 0
     points = 0
+
+    af.team_turn(turn,BOXSIZE,[LARGO,ALTURA],WINDOW,font,TAMAÑO_TABLERO[1])
 
     while runinng:
         clock.tick(FPS)
@@ -99,10 +101,15 @@ def main(num_jugadores):
                 draw = True
                 mouse = pg.mouse.get_pos()
                 
+                
                 if(escena == 0):
+                    af.team_turn(turn,BOXSIZE,[LARGO,ALTURA],WINDOW,font,TAMAÑO_TABLERO[1])
                     index = af.click_in_box(position_matrix,mouse,BOXSIZE)
+                    if index == None:
+                        break
+
                     index -= TAMAÑO_TABLERO[0] 
-                    if index == None or (index in discard_index):
+                    if (index in discard_index):
                         break
 
                     discard_index.append(index)
@@ -113,8 +120,10 @@ def main(num_jugadores):
                     start_turn = turn
                     sub_turn = turn
                 elif (escena == 1):
-                    
+                    af.team_turn(turn,BOXSIZE,[LARGO,ALTURA],WINDOW,font,TAMAÑO_TABLERO[1])
                     correct = af.answer_detect(mouse,answres_matrix[index][4:],answres_matrix[index][:4],BOXZONESIZE,WINDOW,font,[LARGO,ALTURA])
+                    if correct == None:
+                        continue
 
                     pg.time.wait(int(1000*0.25))
 
@@ -205,6 +214,12 @@ if __name__ == "__main__":
             modificador = input("Elegir constante para modificar: ")
             modificador = modificador.lower()
 
+            if (modificador == "q"):
+                File = open(path,"w")
+                File.write(text[0]+"\n"+text[1]+"\n"+text[2]+"\n"+text[3])
+                File.close()
+                break
+
             if (modificador in ["fps","a","l","n","q"]):
 
                 while True:
@@ -221,12 +236,6 @@ if __name__ == "__main__":
                         text[1] = "largo de la ventana:"+value
                     elif (modificador == "l"):
                         text[2] = "numero de equipos base:"+value
-                    break
-
-                if (modificador == "q"):
-                    File = open(path,"w")
-                    File.write(text[0]+"\n"+text[1]+"\n"+text[2]+"\n"+text[3])
-                    File.close()
                     break
 
         print("Modificaciones se aplicaran el la siguiente ejecucion.")

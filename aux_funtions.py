@@ -3,6 +3,7 @@ import os
 import pygame as pg
 import random as rd
 import tkinter as tk
+import math as mth
 
 def string_loder(Tablero_size):
     question_matrix = []
@@ -218,6 +219,7 @@ def answer_detect(mouse,truth_list,answes,size,WINDOW,font,window_size):
     box_size = [box_size[0] - box_size[0] * 0.07,box_size[1] - box_size[1] * 0.07]
 
     result = False
+    inbox = False
     for num_box,_bool in enumerate(truth_list):
         _x = int(window_size[0] * 0.05) + (int(box_size[0] * 0.159) + box_size[0]) * (num_box - 2 * (num_box // 2))
         _y = int(window_size[1] * 0.06) + (size[1] // 2) + (int(box_size[1] * 0.1) + box_size[1]) * (num_box // 2)
@@ -229,6 +231,7 @@ def answer_detect(mouse,truth_list,answes,size,WINDOW,font,window_size):
         color = RED
 
         if hover:
+            inbox = True
             if (_bool.lower() in ["true","verdadero"]):
                 color = GREEN
                 result = True
@@ -238,6 +241,9 @@ def answer_detect(mouse,truth_list,answes,size,WINDOW,font,window_size):
             text_rect = superficie.get_rect(center = (_x+box_size[0]//2,_y+box_size[1]//2))
             WINDOW.blit(superficie,text_rect)
             break
+
+    if not inbox:
+        result = None
 
     pg.display.update()
     return result
@@ -362,7 +368,18 @@ def load_constants():
     
     return constants[0],constants[1],constants[2],constants[3],
     
+def team_turn(turn,box_size,window_size,WINDOW,font,tablero_y):
+    centro = window_size[0]//2
+    _x = centro-(centro*0.3)
+    y_min = int(window_size[1] * 0.17) + (int(box_size[1] * 0.1) + box_size[1]) * tablero_y
+    diference = window_size[1] - y_min
 
+    text = "Turno de equipo: " + str(turn+1)
+    pg.draw.rect(WINDOW,AQUA, pg.Rect(_x,y_min,(centro*0.6),diference))
+    superficie = font.render(text,True,BLACK)
+    text_rect = superficie.get_rect(center = (centro,y_min + (diference//2)))
+    WINDOW.blit(superficie,text_rect)
+    pg.display.update()
 
 BLUE = (40,40,240)
 
