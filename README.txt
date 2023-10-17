@@ -13,4 +13,4 @@ El archivo de "jeopardy_questions.csv" se puede abrir y editar en programa como 
 El programa acepta un mayor numero de temas y preguntas al numero de casillas y columnas. Elegira aleatoriamente los temas y las preguntas de cada puntaje.
 Mientras se cumpla el minimo de preguntas y temas con el formato correcto, correra el programa solamente dandole una advertencia si encuentra algun tema o preguntas con el formato incorrecto diciendole el numero y el problema que tienen.
 
-
+Cualquer bug que se encuentre reportelo para resolverlo.
