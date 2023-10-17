@@ -11,7 +11,7 @@ import pygame as pg
 
 
 
-ALTURA,LARGO,NUM_DEFAULT,FPS = af.load_constants()
+ALTURA,LARGO,NUM_DEFAULT,FPS,TABLERO = af.load_constants()
 
 if ALTURA == "err":
     ALTURA,LARGO,NUM_DEFAULT,FPS = af.load_constants()
@@ -20,13 +20,12 @@ BOXZONESIZE = [LARGO-int(LARGO*0.05)*2, ALTURA-int(ALTURA*0.04)*2]
 
 
 
-def main(num_jugadores):
+def main(num_jugadores,TAMAÑO_TABLERO):
     WINDOW = pg.display.set_mode((LARGO,ALTURA))
     
     runinng = True
 
     clock = pg.time.Clock()
-    TAMAÑO_TABLERO = [5,5]
     BOXSIZE = [int(BOXZONESIZE[0] / TAMAÑO_TABLERO[0]),int(BOXZONESIZE[1] / (TAMAÑO_TABLERO[1]+1))]
     BOXSIZE = [BOXSIZE[0] - BOXSIZE[0] * 0.07,BOXSIZE[1] - BOXSIZE[1] * 0.07]  
     Scores = [0]*num_jugadores
@@ -205,7 +204,9 @@ if __name__ == "__main__":
     num_jugadores = input("Numero de equipos: ")
 
     if num_jugadores == "config":
-        print("FPS, altura de ventana: a, largo de ventana: l, Numero de equipos por defecto: n, terminar modificacion: q")
+        print()
+        print("FPS, altura de ventana: a, largo de ventana: l, Numero de equipos por defecto: n,\nNumero de temas: tl, Numero de preguntas por tema: ta, terminar modificacion: q")
+        print()
         path = af.os.path.join(af.os.path.dirname(__file__),"config.txt")
         File = open(path,"r")
         text = File.read().split("\n")
@@ -216,18 +217,22 @@ if __name__ == "__main__":
 
             if (modificador == "q"):
                 File = open(path,"w")
-                File.write(text[0]+"\n"+text[1]+"\n"+text[2]+"\n"+text[3])
+                File.write(text[0]+"\n"+text[1]+"\n"+text[2]+"\n"+text[3]+"\n"+text[4]+"\n"+text[5])
                 File.close()
                 break
 
-            if (modificador in ["fps","a","l","n","q"]):
+            if (modificador in ["fps","a","l","n","q","ta","tl"]):
 
                 while True:
                     value = input("Nuevo valor: ")
-                    if not(value.isnumeric()) and (value == "0"):
+                    if not((value.isnumeric()) or (value == "0")):
                         print("Valor tiene que ser numero mayor a 0.")
                         continue
                     
+                    if int(value)<1:
+                        print("Valor tiene que ser numero mayor a 0.")
+                        continue
+
                     if (modificador == "fps"):
                         text[3] = "FPS:"+value
                     elif (modificador == "a"):
@@ -236,10 +241,17 @@ if __name__ == "__main__":
                         text[1] = "largo de la ventana:"+value
                     elif (modificador == "l"):
                         text[2] = "numero de equipos base:"+value
+                    elif (modificador == "tl"):
+                        text[4] = "numero de temas:"+value
+                    elif (modificador == "ta"):
+                        text[5] = "numero de preguntas por tema:"+value
                     break
 
         print("Modificaciones se aplicaran el la siguiente ejecucion.")
         num_jugadores = input("Numero de equipos: ")
+
+    if num_jugadores in ["q","salir","exit"]:
+        exit()
 
     if num_jugadores.isnumeric():
         num_jugadores = int(num_jugadores)
@@ -257,5 +269,5 @@ if __name__ == "__main__":
     pg.time.wait(2000)
     print("Done.")
 
-    main(num_jugadores)
+    main(num_jugadores,TABLERO)
     

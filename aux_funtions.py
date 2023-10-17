@@ -92,7 +92,7 @@ def string_loder(Tablero_size):
                 counter[1] += 1
                 continue
             points = int(question[10])//100
-            if not(points < 6 and points>0):
+            if not(points <= Tablero_size[1] and points>0):
                 counter[2] += 1
                 continue
             index = (points)-1
@@ -320,7 +320,7 @@ def score_sort(arr):
     return arr,teams
 
 def restauracion(path,exist):
-    text = "altura de la ventana:720\nlargo de la ventana:1080\nnumero de equipos base:2\nFPS:60"
+    text = "altura de la ventana:720\nlargo de la ventana:1080\nnumero de equipos base:2\nFPS:60\nnumero de temas:5\numero de preguntas por tema:5"
     if not exist:
         open(path,"x")
     
@@ -344,8 +344,8 @@ def load_constants():
     text = File.read().split("\n")
     File.close()
 
-    if len(text) < 4:
-        popup(["No se encontraron todas las constantes en el archivo config.","Restaurando archivo config"],"Warning")
+    if not(len(text) == 6):
+        popup(["Numero de constantes en archivo config no es el esperado.","Restaurando archivo config"],"Warning")
         restauracion(PATH,True)
         return "err","err","err","err"
 
@@ -366,7 +366,7 @@ def load_constants():
         restauracion(PATH,True)
         return "err","err","err","err"
     
-    return constants[0],constants[1],constants[2],constants[3],
+    return constants[0],constants[1],constants[2],constants[3],[constants[4],constants[5]]
     
 def team_turn(turn,box_size,window_size,WINDOW,font,tablero_y):
     centro = window_size[0]//2
@@ -374,7 +374,7 @@ def team_turn(turn,box_size,window_size,WINDOW,font,tablero_y):
     y_min = int(window_size[1] * 0.17) + (int(box_size[1] * 0.1) + box_size[1]) * tablero_y
     diference = window_size[1] - y_min
 
-    text = "Turno de equipo: " + str(turn+1)
+    text = "Turno de equipo " + str(turn+1)
     pg.draw.rect(WINDOW,AQUA, pg.Rect(_x,y_min,(centro*0.6),diference))
     superficie = font.render(text,True,BLACK)
     text_rect = superficie.get_rect(center = (centro,y_min + (diference//2)))

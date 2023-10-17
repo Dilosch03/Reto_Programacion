@@ -2,3 +2,5 @@ altura de la ventana:680
 largo de la ventana:1080
 numero de equipos base:2
 FPS:60
+numero de temas:5
+numero de preguntas por tema:6
