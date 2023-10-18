@@ -6,6 +6,7 @@ import tkinter as tk
 import math as mth
 
 def string_loder(Tablero_size):
+    #carga de los temas y sus preguntas con la validacion del documento "jeopardy_questions.csv"
     question_matrix = []
     questionare_matrix = []
     answer_matrix = []
@@ -113,7 +114,11 @@ def string_loder(Tablero_size):
 
         questionare_matrix[i] = _temp
 
-    caracteristica = [" el tamaño adecuado."," un numero en el area de puntos."," un valor dentro de rango para los puntos."," temas no tienen preguntas para todas las categorias de puntos."]
+    caracteristica = [" el tamaño adecuado.",
+                      " un numero en el area de puntos.",
+                      " un valor dentro de rango para los puntos.",
+                      " temas no tienen preguntas para todas las categorias de puntos."]
+    
     for l,i in enumerate(counter):
         if i>0:
             text = " preguntas no tienen" + caracteristica[l]
@@ -133,7 +138,7 @@ def string_loder(Tablero_size):
         errores.append("Numero de temas aceptados es menor al tamaño del tablero.")
         return "err","err","err", errores
     
-          
+    #elecion random de los temas que se utiliazran
     for i in range(len(questionare_matrix)):
         answer_matrix.append(i)
     
@@ -329,6 +334,7 @@ def restauracion(path,exist):
     
 
 def load_constants():
+    #carga de las constantes almacenadas en el archivo "config.txt" y si validacion
     constants = []
     FILE = "config.txt"
     MAIN_PATH = os.path.dirname(__file__)

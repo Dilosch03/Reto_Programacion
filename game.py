@@ -52,6 +52,7 @@ def main(num_jugadores,TAMAÑO_TABLERO):
     WINDOW.fill(af.BLUE)
 
     for num_heder,heder in enumerate(headers):
+        #Creacion de las casillas que indican los temas
         _x = int(LARGO * 0.05) + (int(BOXSIZE[0] * 0.1) + BOXSIZE[0]) * (num_heder - TAMAÑO_TABLERO[0] * mth.floor(num_heder / TAMAÑO_TABLERO[0]))
         _y = int(ALTURA * 0.02)
 
@@ -64,6 +65,7 @@ def main(num_jugadores,TAMAÑO_TABLERO):
         pg.display.flip()
 
     for num_box in range(TAMAÑO_TABLERO[0] * TAMAÑO_TABLERO[1]):
+        #Creacion de las casillas que almacenan las preguntas
         _x = int(LARGO * 0.05) + (int(BOXSIZE[0] * 0.1) + BOXSIZE[0]) * (num_box - TAMAÑO_TABLERO[0] * mth.floor(num_box / TAMAÑO_TABLERO[0]))
         _y = int(ALTURA * 0.17) + (int(BOXSIZE[1] * 0.1) + BOXSIZE[1]) * mth.floor(num_box / TAMAÑO_TABLERO[0])
 
@@ -87,6 +89,7 @@ def main(num_jugadores,TAMAÑO_TABLERO):
     af.team_turn(turn,BOXSIZE,[LARGO,ALTURA],WINDOW,font,TAMAÑO_TABLERO[1])
 
     while runinng:
+        #loop principal
         clock.tick(FPS)
         draw = False
 
@@ -116,10 +119,12 @@ def main(num_jugadores,TAMAÑO_TABLERO):
                     escena = abs(escena-1)
                     points = int(question_matrix[index][1])
                     af.question_screen(question_matrix[index][0],answres_matrix[index][:4],BOXZONESIZE,font,WINDOW,[LARGO,ALTURA])
+                    af.team_turn(current_team,BOXSIZE,[LARGO,ALTURA],WINDOW,font,TAMAÑO_TABLERO[1])
                     start_turn = turn
                     sub_turn = turn
+
                 elif (escena == 1):
-                    af.team_turn(turn,BOXSIZE,[LARGO,ALTURA],WINDOW,font,TAMAÑO_TABLERO[1])
+                    af.team_turn(current_team,BOXSIZE,[LARGO,ALTURA],WINDOW,font,TAMAÑO_TABLERO[1])
                     correct = af.answer_detect(mouse,answres_matrix[index][4:],answres_matrix[index][:4],BOXZONESIZE,WINDOW,font,[LARGO,ALTURA])
                     if correct == None:
                         continue
@@ -133,10 +138,12 @@ def main(num_jugadores,TAMAÑO_TABLERO):
                         af.selection_screen(position_matrix,headers,BOXSIZE,TAMAÑO_TABLERO,font,WINDOW)
                         Scores[current_team] += points
                         current_team = turn - num_jugadores * (turn // num_jugadores)
+                        af.team_turn(current_team,BOXSIZE,[LARGO,ALTURA],WINDOW,font,TAMAÑO_TABLERO[1])
                     elif ((sub_turn - start_turn) > 2):
                         escena = abs(escena-1) 
                         af.selection_screen(position_matrix,headers,BOXSIZE,TAMAÑO_TABLERO,font,WINDOW)
                         current_team = turn - num_jugadores * (turn // num_jugadores)
+                        af.team_turn(current_team,BOXSIZE,[LARGO,ALTURA],WINDOW,font,TAMAÑO_TABLERO[1])
                     elif(num_jugadores>2):
                         print()
                         print("Equipo actual: "+str(current_team+1))
@@ -152,9 +159,10 @@ def main(num_jugadores,TAMAÑO_TABLERO):
                                     print("Tiene que ser un equipo valido.")
                             else:
                                 print("Tiene que ser un numero.")
-
+                        af.team_turn(current_team,BOXSIZE,[LARGO,ALTURA],WINDOW,font,TAMAÑO_TABLERO[1])
                     else:
-                        current_team = turn - num_jugadores * (turn // num_jugadores)         
+                        current_team = turn - num_jugadores * (turn // num_jugadores) 
+                        af.team_turn(current_team,BOXSIZE,[LARGO,ALTURA],WINDOW,font,TAMAÑO_TABLERO[1])        
                     
         
         if (len(discard_index) == (TAMAÑO_TABLERO[0]*TAMAÑO_TABLERO[1])+TAMAÑO_TABLERO[0]) and (escena ==0):
@@ -194,6 +202,7 @@ if __name__ == "__main__":
     num_jugadores = input("Numero de equipos: ")
 
     if num_jugadores == "config":
+        #Cambio de valores en el archivo config
         print()
         print("FPS, altura de ventana: a, largo de ventana: l, Numero de equipos por defecto: n,\nNumero de temas: tl, Numero de preguntas por tema: ta, terminar modificacion: q")
         print()
@@ -243,6 +252,7 @@ if __name__ == "__main__":
     if num_jugadores in ["q","salir","exit"]:
         exit()
 
+    #validacion de el numero de equipos
     if num_jugadores.isnumeric():
         num_jugadores = int(num_jugadores)
         if num_jugadores<2:
