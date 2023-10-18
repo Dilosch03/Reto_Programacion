@@ -154,16 +154,8 @@ def main(num_jugadores,TAMAÑO_TABLERO):
                                 print("Tiene que ser un numero.")
 
                     else:
-                        current_team = turn - num_jugadores * (turn // num_jugadores)
-
-
-
+                        current_team = turn - num_jugadores * (turn // num_jugadores)         
                     
-                    
-                    
-                    
-        
-
         
         if (len(discard_index) == (TAMAÑO_TABLERO[0]*TAMAÑO_TABLERO[1])+TAMAÑO_TABLERO[0]) and (escena ==0):
             draw = True
@@ -193,12 +185,10 @@ def main(num_jugadores,TAMAÑO_TABLERO):
             pg.display.update()
         
             
-
-
-
-
     
     pg.quit()
+
+
 
 if __name__ == "__main__":
     num_jugadores = input("Numero de equipos: ")

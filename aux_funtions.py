@@ -45,7 +45,7 @@ def string_loder(Tablero_size):
                 index = int(len(headers)-1.)
             
             err = False
-            #heder[0],question[1],answer[2:5],truh table[6:9],points[10]
+
             for element in row:
                 if (element==""):
                     err = True
@@ -253,7 +253,6 @@ def popup(warning,type):
     window = tk.Tk()
 
     window.title(type)
-    #window.geometry("200x200")
 
     color = "red"
     if type == "Warning" :
