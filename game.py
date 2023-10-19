@@ -140,6 +140,7 @@ def main(num_jugadores,TAMAÑO_TABLERO):
                         current_team = turn - num_jugadores * (turn // num_jugadores)
                         af.team_turn(current_team,BOXSIZE,[LARGO,ALTURA],WINDOW,font,TAMAÑO_TABLERO[1])
                     elif ((sub_turn - start_turn) > 2):
+                        turn += 1
                         escena = abs(escena-1) 
                         af.selection_screen(position_matrix,headers,BOXSIZE,TAMAÑO_TABLERO,font,WINDOW)
                         current_team = turn - num_jugadores * (turn // num_jugadores)
@@ -161,7 +162,7 @@ def main(num_jugadores,TAMAÑO_TABLERO):
                                 print("Tiene que ser un numero.")
                         af.team_turn(current_team,BOXSIZE,[LARGO,ALTURA],WINDOW,font,TAMAÑO_TABLERO[1])
                     else:
-                        current_team = turn - num_jugadores * (turn // num_jugadores) 
+                        current_team = sub_turn - num_jugadores * (sub_turn // num_jugadores) 
                         af.team_turn(current_team,BOXSIZE,[LARGO,ALTURA],WINDOW,font,TAMAÑO_TABLERO[1])        
                     
         

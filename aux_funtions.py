@@ -384,7 +384,8 @@ def team_turn(turn,box_size,window_size,WINDOW,font,tablero_y):
     superficie = font.render(text,True,BLACK)
     text_rect = superficie.get_rect(center = (centro,y_min + (diference//2)))
     WINDOW.blit(superficie,text_rect)
-    pg.display.update()
+    pg.display.flip()
+
 
 BLUE = (40,40,240)
 
