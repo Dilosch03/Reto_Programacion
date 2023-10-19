@@ -1,3 +1,5 @@
+Es un juego estilo jeopardy el cual puedes definir tus propias preguntas y el numero de equipos que participan.
+
 Antes de que el programa puedes definir el numero de equipos que van a jugar.
 Si no se ingresa ningun numero o un numero menor de 2 equipos se utilizara el numero de equipos por defecto que esta guardado en el archivo config.
 El programa aceptara cualquer numero mayor a 2 pero cuando se reprecenten los puntajes para cada equipo se podran solapar los textos.
